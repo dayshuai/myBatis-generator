@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="lib\ojdbc6-11.1.0.7.0.jar" />
+	<context id="OracleTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@11.11.10.81:1521:ctrc" userId="oos_init"
+			password="oos_init">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.hundsun.dao.entity"
+			targetProject="../mybatis-generator/src/main/java"
+			suffix="Entity">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.hundsun.dao.mapper"
+			targetProject="../mybatis-generator/src/main/java"
+			suffix="Mapper">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<!-- 新增文件名后缀字段suffix, eg. 定义的对象名为User, 则生成的model对象名为UserEntity
+		interface名称为UserDAO, sqlMapper名称为UserMapper.xml -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.hundsun.dao" 
+			targetProject="../mybatis-generator/src/main/java"
+			suffix="DAO">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<table tableName="TDEF_FIELD" domainObjectName="TdefField"
+			enableSelectByExample="false" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false">
+		</table>
+	</context>
+</generatorConfiguration>
